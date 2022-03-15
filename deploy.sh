@@ -1,14 +1,25 @@
 #!/usr/bin/env sh
-# abort on errors
+
+# остановить публикацию при ошибках
 set -e
-# build
-yarn run build
-# navigate into the build output directory
+
+# сборка
+npm run build
+
+# переход в каталог сборки
 cd dist
-# if you are deploying to a custom domain
+
+# если вы публикуете на пользовательский домен
 # echo 'www.example.com' > CNAME
+
 git init
 git add -A
 git commit -m 'deploy'
-git push -f git@github.com:ermilov-code/calculator__Vue.git master:gh-pages
+
+# если вы публикуете по адресу https://<USERNAME>.github.io
+# git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
+
+# если вы публикуете по адресу https://<USERNAME>.github.io/<REPO>
+git push -f git@github.com:/ermilov-code/calculator__Vue.git master:gh-pages
+
 cd -
